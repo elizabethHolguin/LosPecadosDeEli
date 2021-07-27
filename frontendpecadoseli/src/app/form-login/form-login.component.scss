@@ -1,0 +1,15 @@
+.form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.under-text{
+    color: blue;
+    cursor: pointer;
+    &:hover{ text-decoration: underline; }
+}
+
+.message{
+    padding-top: 1rem;
+}

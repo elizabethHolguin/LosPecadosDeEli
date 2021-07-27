@@ -1,0 +1,26 @@
+<div class="container main">
+    <div id="buscador" class="col-md-12 mt-2">
+        <form class="form-inline justify-content-center" [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
+          <div class="form-group mx-sm-3">
+            <input type="text" class="form-control" formControlName="text" placeholder="Texto a buscar">
+          </div>
+          <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+    </div>
+    
+    <h2>Noticias</h2>
+    <div class="row" *ngIf="(newsService.news$ | async) as news">
+        <div class="content col-12 col-md-4 col-xl-3" *ngFor="let arti of news['news']">
+            <div class="card">
+                <div class="card-img">
+                    <img [src]="arti.url_image" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                <h5 class="card-title .text-overflox">{{ arti.title }}</h5>
+                <p class="card-text .text-overflox">{{ arti.abstract }}</p>
+                <a href="" class="btn btn-primary" [routerLink]="['/news', arti.newsID]">Leer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+.main{
+    margin: 2rem auto;
+}
+
+.background{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 2555, 255, 0.6);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    z-index: 100;
+}
+
+.admin-content{
+    padding-top: 2rem;
+    background-color: #eee;
+}
+
+.admin-content h2{
+    padding: 1rem 0;
+    padding-bottom: 2rem;
+}
+
+@media (min-width: 992px) {
+    .introjs-helperNumberLayer{
+        left: -20px !important;
+        top: 7px !important;
+    }
+    
+    .admin-content{
+        margin-left: 250px;
+    }
+}
+
+@media (max-width: 992px) {
+    .introjs-helperNumberLayer{
+        display: none;
+    }
+
+    .admin-content{
+        margin-left: 0;
+    }
+}

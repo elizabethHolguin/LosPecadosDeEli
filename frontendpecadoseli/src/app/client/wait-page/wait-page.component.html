@@ -1,0 +1,12 @@
+<div class="background center direction-colunm" *ngIf="application.waitPage$">
+    <div class="card">
+        <ng-container *ngIf="!application.messageWait$">
+            <div @showUpElement class="firweworks"></div>
+            <span class="wait">Espere</span>
+        </ng-container>
+        <div class="direction-colunm" *ngIf="application.messageWait$ as message" >
+            <h5>{{ message }}</h5>
+            <input (click)="close()" value="Vale" class="btn btn-primary">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+.card{
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+i{
+    margin: 0 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.circle{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.circle:last-of-child{
+    margin-right: 0;
+}

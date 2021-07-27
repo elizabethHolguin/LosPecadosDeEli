@@ -1,0 +1,32 @@
+<div class="container main">
+    <aside class="card card-delete direction-row" *ngIf="current_product && current_product.is_ordenate">
+        <i class="fas fa-check"></i>
+        <img [src]="current_product.url_image" alt="comida">
+        <!--<img [src]="last_product.list_images[0]" alt="comida">-->
+        <span>Agregado a carrito</span>
+        <h4>{{ current_product.name }}</h4>
+        <button class="btn btn-light new-cart" [routerLink]="['../cart']">Carrito</button>
+    </aside>
+
+    <div class="row" *ngIf="(products_service.products$ | async) as products">
+        <div class="container-product col-12 col-md-6 col-lg-6" *ngFor="let product of products">
+            <aside class="card-product" >
+                <div class="image center">
+                    <img [src]="product.url_image" alt="comida">
+                </div>
+                <div class="title text">
+                    <h4>{{ product.name }}</h4>
+                </div>
+                <div class="description text">
+                    <p>{{ product.description }}</p>
+                </div>
+                <div class="orden text">
+                    <button class="btn btn-primary" (click)="search_product(product.productID)">US$ {{ product.unitPrice }}</button>
+                </div>
+            </aside>
+        </div>
+        <div *ngIf="!products.length">
+            <span>No hay productos.</span>
+        </div>
+    </div>
+</div>

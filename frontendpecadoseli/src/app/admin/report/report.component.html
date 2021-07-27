@@ -1,0 +1,95 @@
+<div class="admin-content">
+  <div class="container">
+    <h2>Reportes</h2>
+    <div class=" card">
+      <p>Use el siguiente formulario para filtrar los resultados.</p>
+
+      <form  [formGroup]="form_date">
+        <div class="row">
+          <div class="form-group form-inline col-4">
+            <label for="universal">Busqueda general: </label>
+            <input class="form-control ml-2" id="universal" type="text" [formControl]="filter"/>
+          </div>
+          <div class="form-group form-inline col-4">
+            <label for="startdate">Fecha inicial: </label>
+            <input class="form-control ml-2" formControlName="startdate" id="startdate" type="date" (ngModelChange)="onSubmit(form_date.value)"/>
+          </div>
+          <div class="form-group form-inline col-4">
+            <label for="enddate">Fecha final: </label>
+            <input class="form-control ml-2" formControlName="enddate" id="enddate" type="date" (ngModelChange)="onSubmit(form_date.value)"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-6">
+            <label for="categoryID">Filtrar por categoria</label>
+            <select
+              *ngIf="categoryService.categories$ | async as categories"
+              id="categoryID"
+              [formControl]="filter"
+              class="form-control">
+                <option></option>
+                <option
+                  *ngFor="let cate of categories"
+                  [value]="cate.categoryname">{{ cate.categoryname.charAt(0).toUpperCase() + cate.categoryname.slice(1) }}
+                </option>
+            </select>
+          </div>
+        </div>
+      </form>
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th class="upward" scope="col" (click)="sort('name')">
+            <i *ngIf="upward && case_type=='name'" class="fas fa-arrow-up"></i>
+            <i *ngIf="!upward && case_type=='name'" class="fas fa-arrow-down"></i>
+            Producto</th>
+          <th class="upward" scope="col" (click)="sort('categoryname')">
+            <i *ngIf="upward && case_type=='categoryname'" class="fas fa-arrow-up"></i>
+            <i *ngIf="!upward && case_type=='categoryname'" class="fas fa-arrow-down"></i>
+            Categoria</th>
+          <th class="upward" scope="col" (click)="sort('unitPrice')">
+            <i *ngIf="upward && case_type=='unitPrice'" class="fas fa-arrow-up"></i>
+            <i *ngIf="!upward && case_type=='unitPrice'" class="fas fa-arrow-down"></i>
+            Precio unitario</th>
+          <th class="upward" scope="col" (click)="sort('sales')">
+            <i *ngIf="upward && case_type=='sales'" class="fas fa-arrow-up"></i>
+            <i *ngIf="!upward && case_type=='sales'" class="fas fa-arrow-down"></i>
+            Ventas totales</th>
+          <th class="upward" scope="col" (click)="sort('neto')">
+            <i *ngIf="upward && case_type=='neto'" class="fas fa-arrow-up"></i>
+            <i *ngIf="!upward && case_type=='neto'" class="fas fa-arrow-down"></i>
+            Ingreso neto</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of countries$ | async; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            <img [src]="product.url_image" class="mr-2" style="width: 20px">
+            <ngb-highlight [result]="product.name" [term]="filter.value"></ngb-highlight>
+          </td>
+          <td><ngb-highlight [result]="product.categoryname" [term]="filter.value"></ngb-highlight></td>
+          <td><ngb-highlight [result]="product.unitPrice | number" [term]="filter.value"></ngb-highlight>$</td>
+          <td><ngb-highlight [result]="product.sales | number" [term]="filter.value"></ngb-highlight></td>
+          <td><ngb-highlight [result]="product.sales * product.unitPrice | number" [term]="filter.value"></ngb-highlight>$</td>
+        </tr>
+      
+        </tbody>
+      </table>
+      <!--
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+        </ngb-pagination>
+      
+        <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+          <option [ngValue]="2">2 items per page</option>
+          <option [ngValue]="4">4 items per page</option>
+          <option [ngValue]="6">6 items per page</option>
+        </select>
+      </div>
+      -->
+    </div>
+  </div>
+</div>

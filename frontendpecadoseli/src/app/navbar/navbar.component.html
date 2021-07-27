@@ -1,0 +1,45 @@
+<header class="banner" *ngIf="!router.url.includes('/admin')">
+    <nav class="container navbar navbar-expand-lg navbar-dark" id="nav">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" (click)="togleMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <div class="menu-icon direction-row">
+        <div class="icon" title="Carrito de compras" >
+          <a href="" routerLink="cart">
+            <i class="fas fa-cart-plus" id="card-desktop"></i>
+          </a>
+        </div>
+        <div class="icon" title="Perfil" *ngIf="auth_service.user$ | async as user">
+          <a href="" [routerLink]="(user.is_superuser)? 'admin':'profile'">
+            <i class="fas fa-user"></i>
+          </a>
+        </div>
+        <div *ngIf="!auth_service.user$"  class="icon" title="Inicio sesión" (click)="open()">
+          <i class="fas fa-sign-in-alt" id="login-desktop"></i>
+        </div>
+        <div *ngIf="auth_service.user$" class="icon" title="Cerrar sesión" (click)="auth_service.signOut()">
+          <i class="fas fa-sign-out-alt"></i>
+        </div>
+      </div>
+    
+      <div class="navbar-collapse" [ngClass]="{menudesplegable: !see_menu}">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item logo">
+            <a class="nav-link" href="" routerLink="/">
+              <img src="../assets/images/logo.png" alt="logo">
+            </a>
+          </li>
+          <li class="nav-item" id="search-product">
+            <form class="justify-content-center form-inline" [formGroup]="form_search" (ngSubmit)="onSubmit(form_search.value)">
+              <input type="text" class="form-control" formControlName="product" placeholder="Buscar producto">
+              <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+          </li>
+          <li class="nav-item" *ngFor="let link of links">
+            <a class="nav-link link-nav" href="" [routerLink]="link.fragment" [id]="link.fragment">{{link.title}}</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+</header>

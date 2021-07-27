@@ -1,0 +1,34 @@
+.content{
+    box-sizing: border-box;
+    padding: 0.5rem;
+}
+
+.text-overflox{
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-text{
+    height: 50px;
+}
+
+.card-img{
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+
+    img{
+        width: 100%;
+    }
+}
+
+@media (max-width: 992px) {
+    .form-inline{
+        margin-bottom: 1rem;
+
+        * {
+            margin: 0;
+        }
+    }
+}

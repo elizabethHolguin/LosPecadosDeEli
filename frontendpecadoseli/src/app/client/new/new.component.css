@@ -1,0 +1,18 @@
+.card{
+    box-sizing: border-box;
+    padding: 2rem;
+}
+
+p{
+    text-align: justify;
+}
+
+aside{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+aside img{
+    width: 100%;
+}

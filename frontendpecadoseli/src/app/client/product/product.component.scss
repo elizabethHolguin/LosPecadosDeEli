@@ -1,0 +1,38 @@
+.image_selector{
+    grid-area: image_selector;
+    height: 50px;
+    .mini-image{
+        height: 100%;
+        border-radius: 0.3rem;
+        opacity: 0.5;
+        &:hover{ opacity: 1; }
+    }
+}
+
+.image{
+    overflow: hidden;
+    height: 250px;
+    margin: 0.5rem 0;
+    img{
+        border-radius: 0.3rem;
+        height: 100%;
+    }
+}
+
+.category{
+    color: blue;
+    border-bottom: 1px rgba($color: #000000, $alpha: .4) solid;
+}
+
+.money{
+    color: red;
+}   
+
+.symbol{
+    font-size: 0.618em;
+    margin: 0;
+}
+
+button{
+    width: 100%;
+}

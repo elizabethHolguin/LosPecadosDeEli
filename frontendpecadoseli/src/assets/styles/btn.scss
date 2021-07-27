@@ -1,0 +1,25 @@
+
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+    background-color: #de0d11 !important;
+    border: none;
+}
+
+.btn-primary:hover{
+    background-color: #5e0607 !important;
+    border: none;
+}
+
+.btn-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+    cursor: pointer;
+    transition: transform 120ms;
+    transform: scale(2);
+    color: var(--color2);
+    
+    &:hover{
+        transform: scale(2.1);
+    }
+}

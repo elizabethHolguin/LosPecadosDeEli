@@ -1,0 +1,130 @@
+.row{
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+.informacion{
+    box-sizing: border-box;
+    padding: 0.5rem;
+
+    .image-profile{
+        border-radius: 50%;
+        overflow: hidden;  
+    }
+    
+    h4{        
+        padding: 0.5rem 0;
+    }
+    
+    h5{        
+        padding: 0.2rem 0;
+    }   
+}
+
+h3{
+    padding: 0 0.5rem;
+}
+
+.form{
+    margin: 0;
+        
+    input{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+        
+    label{
+        box-sizing: border-box;
+    }
+}
+
+.col-lg-6, .col-12{
+    padding: 0 0.5rem;
+}
+
+.row{
+    margin: 0;
+}
+
+.data{
+    padding: 0.5rem;
+}
+
+.aswer{
+    color: red;
+    text-align: center;
+}
+
+.icon{
+    box-sizing: border-box; 
+    padding-right: 0.5rem;
+}
+
+.card-option{
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: 1px solid rgba($color: #000000, $alpha: .2);
+}
+
+.menu-option{
+    padding: 0.5rem;
+    box-sizing: border-box;
+
+    justify-content: space-between;
+}
+
+.direction-colunm, .image-profile{
+    margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+    .informacion{
+        display: flex;
+    }
+
+    .image-profile{
+        height: 200px;
+        width: 200px;
+
+        img{
+            height: 100%;
+        }    
+    }
+}
+
+@media (max-width: 576px) {
+    .image-profile{
+        height: 125px;
+        width: 125px; 
+    }
+
+    .icon{
+        display: none;
+    }
+
+    .container, .main{
+        margin: 0;
+        padding: 0.5rem;
+    }
+
+    .informacion{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 992px) {
+    .informacion{
+        padding: 0.5rem;
+    
+        .image-profile{
+            width: 100%;
+    
+            img{
+                width: 100%;
+            }    
+        }        
+    }
+}

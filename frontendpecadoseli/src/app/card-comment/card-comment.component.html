@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="direction-row">
+        <span>Este comentario fue enviado el {{ comment.creation_date }}</span>
+        <i class="fas fa-angle-down" *ngIf="!currentComment" (click)="getCurrentCommet(comment.commentaryID)"></i>
+        <i class="fas fa-angle-up" *ngIf="currentComment" (click)="currentComment = undefined"></i>
+    </div>
+    <div class="center" *ngIf="currentComment">
+        <div *ngIf="currentComment | async as current; else esperando">
+            <span>{{ current.content }}</span>
+        </div>
+        <ng-template #esperando>
+            <div [@loading]="elements.length" style="height: 22px;">
+                <div *ngFor="let color of elements" class="circle" [ngStyle]="{'background-color': color}"></div>
+            </div>
+        </ng-template>
+    </div>
+</div>

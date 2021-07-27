@@ -1,0 +1,15 @@
+.grafico div{
+	font-size: 1rem;
+	background-color: #ab0a0d;
+	border: solid #5e0607 2px;
+	padding: 0.4rem;
+	margin: 0.7rem;
+	color: white;
+	border-radius: 0.3rem;
+}
+
+@media (max-width: 992px){
+	.grafico div{
+		font-size: 0.618rem;
+	}
+}

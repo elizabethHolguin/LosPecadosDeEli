@@ -1,0 +1,16 @@
+{
+    "news" : [
+        {
+          "newsID": 123456789,
+          "title" : "LOS PECADOS DE ELI LANZARÁ SU NUEVA LÍNEA DE PRODUCTOS",
+          "abstract": "Se lanzaran nuevos productos.",
+          "url_image" : "https://www.enmicocinahoy.cl/wp-content/uploads/2013/03/donas-caseras-5.jpg"
+        },
+        {
+          "newsID": 123456780,
+          "title" : "ACTOR DE TRES FAMILIAS ES TENTADO POR ELI ",
+          "abstract": "Isidro Murillo prueba nuestros prodictos y nos da su opinion.",
+          "url_image" : "https://live.staticflickr.com/4180/34458160895_7779e67ecc_b.jpg"
+        }
+      ]
+}

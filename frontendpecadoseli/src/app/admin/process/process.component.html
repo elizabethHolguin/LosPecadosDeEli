@@ -1,0 +1,67 @@
+<div class="admin-content">  
+  <div class="container">
+    <h2>Procesos</h2>
+    <aside class="card">
+      <ngb-tabset [destroyOnHide]="false">
+        <ngb-tab title="Producto">
+          <ng-template ngbTabContent>
+            <h3>Añadir nuevo producto</h3>
+            <form [formGroup]="form_product" (ngSubmit)="onSubmit(form_product.value)">
+              <div class="form-group">
+                <label for="name">Añadir nombre:</label>
+                <input class="form-control" type="text" formControlName="name" id="name" placeholder="Ingrese el nombre">
+              </div>
+              <div class="form-group">
+                <label for="unitPrice">Añadir precio</label>
+                <input class="form-control" type="number" formControlName="unitPrice" id="unitPrice" placeholder="Ingrese el precio unitario">
+              </div>
+              <div class="form-group">
+                <label for="categoryID">Añadir categoria</label>
+                  <select
+                    *ngIf="categoryService.categories$ | async as categories"
+                    id="categoryID"
+                    formControlName="categoryID"
+                    class="form-control">
+                      <option></option>
+                      <option
+                      *ngFor="let cate of categories"
+                      [value]="cate.categoryID">{{ cate.categoryname.charAt(0).toUpperCase() + cate.categoryname.slice(1) }}</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="url_image">Añadir imagen</label>
+                <input (change)="changeGround($event)" type="file" class="form-control-file" formControlName="url_image" id="url_image" placeholder="Añada la imagen">
+              </div>
+              <div class="form-group">
+                <label>Añadir descripcion</label>
+                <textarea class="textarea form-control" formControlName="description" cols="200" rows="5"></textarea>
+              </div>
+              <input class="btn btn-primary" type="submit" value="Guardar">
+            </form>
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="Categoria">
+          <ng-template ngbTabContent>
+            <h3>Añadir nueva categoria</h3>
+            <form [formGroup]="form_category" (ngSubmit)="onSubmitCategory(form_category.value)">             
+              <div class="form-group">
+                <label for="namecategory">Añadir nombre:</label>
+                <input type="text" class="form-control" formControlName="name" id="namecategory" placeholder="Ingrese el nombre">
+              </div>
+              <div class="form-group">
+                <label>Añadir descripcion</label>
+                <textarea class="textarea form-control" formControlName="description" cols="200" rows="5"></textarea>
+              </div>
+              <input class="btn btn-primary" type="submit" value="Guardar">
+            </form>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+
+      <ng-container *ngIf="appService.error$ as message">
+        <span class="message" style="color: red;">{{message}}</span>
+      </ng-container>
+    </aside>
+  </div> 
+</div>

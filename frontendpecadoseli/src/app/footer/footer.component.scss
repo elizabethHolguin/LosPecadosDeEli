@@ -1,0 +1,27 @@
+.logo-foot{
+    max-width: 60%;
+}
+
+.footer{
+    background-color: #ccc;
+
+    a{
+        font-weight: bold;
+        color: var(--color-secondary);
+        &:hover{
+            color: var(--color-primary);
+        }
+    }
+}
+
+.social{
+    padding: 0.75rem;
+    i{
+        cursor: pointer;
+        transform: scale(1.5);
+        color: var(--color-primary);
+        &:hover{
+            color: var(--color-secondary);
+        }
+    }
+}

@@ -1,0 +1,125 @@
+.container-product{
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+}
+
+.card-product{
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas: 
+        "title title "
+        "image description"
+        "image orden"
+    ;
+
+    .text{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: justify;
+    }
+
+    .title{
+        grid-area: title;
+        h4{
+            margin: 0;
+        }
+    }
+    
+    .description{
+        grid-area: description;
+        p{
+            margin: 0;
+        }
+    }
+    
+    .image{
+        grid-area: image;
+        overflow: hidden;
+        img{
+            border-radius: 0.3rem;
+            width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    .orden{
+        grid-area: orden;
+        button{
+            width: 75%;
+        }
+    }
+}
+
+.card{
+    position: relative;
+    border-color: green;
+    box-sizing: border-box;
+    padding: 0.5rem;
+
+    color: green;
+
+    *{
+        padding: 0rem 0.5rem;
+    }
+
+    img{
+        max-height: 70px;
+    }
+
+    h4{
+        color: black;
+        font-weight: bold;
+    }
+}
+
+.new-cart{
+    transform: scale(1.5);
+    position: absolute;
+    right: 3rem;
+    border: 1px solid black;
+}
+
+@media (max-width: 576px) {
+    .card-product{
+        margin-bottom: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+        grid-template-areas: 
+            "image title "
+            "image description"
+            "image orden"
+        ;
+    }
+
+    .text{
+        margin-left: 1rem;
+    }
+
+    .card-delete{
+        h4{
+            display: none;
+        }
+    }
+}
+@media (max-width: 992px) {
+    .new-cart{
+        display: none;
+    }
+}
+
+@media (min-width: 576px) {
+    .title{
+        padding-bottom: 0.5rem;
+    }
+
+    .description, .orden{
+        padding-left: 1rem;
+    }
+
+    .orden{
+        display: flex;
+        align-items: flex-end;
+    }
+}

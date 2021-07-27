@@ -1,0 +1,53 @@
+<div class="container main">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">ABOUT ME</h3>
+            <div class="row">
+                <div class="form-group col-12 col-md col-xl">
+                    <p>Elizabeth Sarango Paredes</p>
+                    <p>Tlf: 042150816</p>
+                    <p>Celular: +593980077534</p>
+                    <p>Correo electrónico: elizasp_25@hotmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 1rem;">
+        <div class="card-body">
+            <h3 class="card-title">Danos tu opinión</h3>
+            <div class="row">
+                <p class="col-12">Escribe tu opinión para que podamos mejorar y darte un mejor servicio, incluye todo lo que deseas comunicar desde tu sentimiento hasta tus experiencias.</p>
+            </div>
+            <form [formGroup]="commentForm" (ngSubmit)="onSubmit(commentForm.value)">
+                <div class="row">
+                    <div class="form-group col-12 col-md col-xl">
+                        <label for="emailComment">Correo electrónico</label>
+                        <input type="email" class="form-control" formControlName="email" id="emailComment" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">Nos gustaría contactarte.</small>
+                    </div>
+                    <div class="form-group col-12 col-md col-xl">
+                        <label for="inputState">Provincia</label>
+                        <select id="city" formControlName="city" class="form-control">
+                            <option></option>
+                            <option *ngFor="let city of provincias">{{ city }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-12 col-md col-xl">
+                        <label for="date_birth">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" formControlName="date_birth" id="date_birth">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-12">
+                        <textarea class="textarea" formControlName="content" id="content" cols="200" rows="10"></textarea>
+                    </div>
+                </div>
+                <input type="submit" value="Enviar" class="btn btn-primary">
+            </form>
+            <ng-container *ngIf="appService.error$ as message">
+                <span class="message" style="color: red;">{{message}}</span>
+            </ng-container>
+        </div>
+    </div>
+</div>

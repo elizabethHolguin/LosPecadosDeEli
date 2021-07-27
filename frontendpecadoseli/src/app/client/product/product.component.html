@@ -1,0 +1,34 @@
+<div class="card-product" *ngIf="current_product">
+    <aside class="image_selector center">
+        <!--<div *ngFor="let image of current_product.list_images">-->
+        <img *ngIf="current_product.url_image as image"
+            class="mini-image"
+            [src]="image"
+            alt="image"
+            (mouseover)="changeImage(image)"
+        >
+    </aside>
+        
+    <div class="image center">
+        <img [src]="current_product.url_image" alt="current_image">
+    </div>
+
+    <h3>{{ current_product.name }}</h3>
+    <a class="category" *ngIf="current_product.categoryname as categoryname">{{ categoryname.toUpperCase() }}</a>
+    <div class="description ">
+        <p class="symbol">Descripción: </p>
+        <p>{{ current_product.description }}</p>
+    </div>
+    <div class="orden">
+        <form [formGroup]="buyForm" (ngSubmit)="onSubmit(buyForm.value)">
+            <div class="direction-row form-group">
+                <label class="price" for="quantity">
+                    <span class="small-font">Precio por unidad: </span><span class="money">US$ {{ current_product.unitPrice }}</span>
+                </label>
+                <input class="form-control" type="number" min="0" formControlName="quantity" id="quantity" placeholder="Cantidad" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Ordenar</button>
+        </form>
+    </div>
+    <div class="btn-close" (click)="activeModal.close()"><i class="far fa-times-circle"></i></div>
+</div>

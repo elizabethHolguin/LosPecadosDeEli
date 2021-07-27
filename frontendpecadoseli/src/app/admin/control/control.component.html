@@ -1,0 +1,38 @@
+<div class="admin-content">
+  <div class="container">
+    <h2>Resumen de ventas</h2>
+    <label for="report">Escoja un periodo para mostrar un reporte:</label>
+    <select class="form-control" id="report" (change)="getReport_fordate($event.target.value)">
+      <option value="1">Hoy</option>
+      <option value="3">3 días anteriores</option>
+      <option value="7">Semana pasada</option>
+      <option value="30">Mes pasado</option>
+    </select>
+    <div class="container-card">
+      <h3 class="sub-title"> Ventas diarias </h3>
+      <aside class="container-graf">   
+        <h4 class="sub-title">Empanadas capitales</h4>
+        <app-grafico [data]="chartDataDia"></app-grafico>
+      </aside>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="container-card">
+      <h3 class="sub-title"> Ventas de los ultimos 30 dias </h3>
+      <aside class="container-graf">
+        <app-historigram [data]="data"></app-historigram>
+      </aside>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="container-card">
+      <h3 class="sub-title"> Porcentajes de órdenes últimos 7 días </h3>
+      <aside class="container-graf">
+        <app-pastel [data]="data_week"></app-pastel>
+      </aside>
+    </div>
+  </div>
+  <br>
+</div>

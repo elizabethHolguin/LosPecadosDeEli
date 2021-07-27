@@ -1,0 +1,75 @@
+<div class="container main">
+    <aside class="card card-delete" *ngIf="last_product">
+        <div class="row">
+            <div class="col-4 image">
+                <img [src]="last_product.url_image" alt="comida">
+            </div>    
+            <div class="direction-colunm col-7">
+                <h3>{{ last_product.name }}</h3>
+                <span>Eliminado de su carrito</span>
+                <button class="btn btn-light" (click)="restablecer()">Restablecer</button>
+            </div>
+        </div>
+    </aside>
+
+    <h2>Carrito</h2>
+    <div class="row reverse-cart">
+        <div class="col-12 col-lg-8">
+            <ng-container *ngIf="cartService.products.size != 0; else emply">
+                <div class="card cart" *ngFor="let item of cartService.products | keyvalue">
+                    <div class="image center">
+                        <img [src]="item.key.url_image" alt="comida">
+                        <!--<img [src]="item.key.list_images[0]" alt="">-->
+                    </div>
+                    <h4 class="title">{{ item.key.name }}</h4>
+                    <span class="subtotal center">US$ {{ (item.key.unitPrice * item.value).toFixed(2) }}</span>
+                    <div class="option small-font">
+                        <span class="disponible">Disponible</span>
+                        <span class="eliminar" (click)="delete_product(item.key, item.value)">Eliminar</span>
+                    </div>
+                    <div class="quantity center">
+                        <div class="button center" (click)="cartService.minusQuantity(item.key)"><i class="fas fa-minus"></i></div>
+                        <span>{{ item.value }}</span>
+                        <div class="button center" (click)="cartService.moreQuantity(item.key)"><i class="fas fa-plus"></i></div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #emply>
+                <div class="center direction-colunm">
+                    <h3 class="message">Su carrito está vacío, vea nuestro catálogo.</h3>
+                    <button class="btn btn-primary" [routerLink]="['../product']"><i class="fas fa-reply"></i> Catalogo</button>
+                </div>
+            </ng-template>
+        </div>
+        <div class="col-12 col-lg-4 total">
+            <div class="card center">
+                <h4>Subtotal ({{ cartService.products.size }} productos):</h4>
+                <h4>US$ {{ total().toFixed(2) }}</h4>
+                <button
+                *ngIf="(geolocation_service.coords$ | async) as coords"
+                class="btn btn-warning"
+                (click)="open()"
+                >Procesar el pago</button>
+            </div>
+
+            <div *ngIf="(geolocation_service.coords$ | async) as coords; else button" class="map center">
+                <iframe
+                [src]="sanitization.bypassSecurityTrustResourceUrl('https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3986.810859291893!2d'+coords.lon+'!3d'+coords.lat+'!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sec!4v1600527813520!5m2!1ses!2sec')"
+                
+                height="350"
+                frameborder="0"
+                style="border:0;"
+                allowfullscreen=""
+                aria-hidden="false"
+                tabindex="0"
+                ></iframe>
+            </div>
+            <ng-template #button>
+                <div class="direction-colunm" >
+                    <span>Active su ubicación para que pueda ordenar.</span>
+                    <button class="btn btn-primary" (click)="geolocation_service.requestGeolocation()">Activar</button>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

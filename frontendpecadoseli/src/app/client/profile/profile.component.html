@@ -1,0 +1,105 @@
+<div class="container main">
+    <div class="row">
+        <div class="col-md-12 col-lg-4 informacion" *ngIf="authservice.user$ | async as user">
+            <div class="image-profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png" alt="">
+            </div>
+            <div class="direction-colunm">
+                <h4>{{user.username}}</h4>
+                <h5>{{user.first_name}}</h5>
+                <h5>{{user.last_name}}</h5>
+                <h5>{{user.email}}</h5>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-lg-8 data">
+            <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                <li [ngbNavItem]="1">
+                    <a ngbNavLink><i class="fas fa-book-open icon"></i>Informacion</a>
+                    <ng-template ngbNavContent>
+                        <ng-container *ngIf="authservice.user$ | async as user">
+                            <h3>Datos de cliente</h3>
+                            <form class="form row" [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="email">Username:</label>
+                                        <input type="text" class="form-control" formControlName="username" id="username" [placeholder]="user.username" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Nombre:</label>
+                                        <input type="text" class="form-control" formControlName="first_name" id="first_name" [placeholder]="user.first_name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="username">Apellido:</label>
+                                        <input type="text" class="form-control" formControlName="last_name" id="last_name" [placeholder]="user.last_name" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="password">Email:</label>
+                                        <input type="email" class="form-control" formControlName="email" id="email" [placeholder]="user.email" required>
+                                    </div>
+                                    <ng-container *ngIf="authservice.client$ as client">
+                                        <div class="form-group">
+                                            <label for="direction">Dirección:</label>
+                                            <input type="text" class="form-control" formControlName="direction" id="direction" [placeholder]="client.direction" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="city">Cuidad:</label>
+                                            <input type="email" class="form-control" formControlName="city" id="city" [placeholder]="client.city" required>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                                </div>
+                            </form>
+                        </ng-container>
+                        <ng-container *ngIf="appService.error$ as message">
+                            <span class="message" style="color: red;">{{message}}</span>
+                        </ng-container>
+                    </ng-template>
+                </li>
+                <!--
+                <li [ngbNavItem]="2">
+                    <a ngbNavLink><i class="far fa-address-book icon"></i>Contactos</a>
+                    <ng-template ngbNavContent>
+                    <p>page 2.</p>
+                    </ng-template>
+                </li>
+                <li [ngbNavItem]="3">
+                    <a ngbNavLink><i class="fas fa-shopping-bag icon"></i>Historial</a>
+                    <ng-template ngbNavContent>
+                        <div class="direction-colunm" *ngIf="commentService.commentaries$ | async as comments">
+                            <app-card-comment *ngFor="let comment of comments" [comment]="comment"></app-card-comment>
+                        </div>
+                    
+                    </ng-template>    
+                </li>
+                -->
+                <li [ngbNavItem]="4">
+                    <a ngbNavLink><i class="fas fa-cog icon"></i>Configuración</a>
+                    <ng-template ngbNavContent>
+                        <div class="card-option">
+                            <div class="row center">
+                                <div class="col-6 col-md-8">
+                                    <span>¿Desea eliminar su cuenta?</span>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <button type="button" (click)="seen_options = true" class="btn btn-light">Eliminar cuenta</button>
+                                    <span class="aswer" *ngIf="seen_options">¿Esta seguro de eliminar su cuenta?</span>
+                                    <div class="direction-row menu-option" *ngIf="seen_options">
+                                        <button type="button" (click)="authservice.delete_account()" class="btn btn-danger">Si</button>
+                                        <button type="button" (click)="seen_options = false" class="btn btn-light">No</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+              </ul>
+              
+              <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+@mixin card {
+    border-radius: 0.5rem;
+    padding: 2rem;
+    position: relative;
+    background-color: white;
+
+    border: 2px solid var(--color2);
+}
+
+.card {
+    @include card;
+    padding: 0.5rem;
+}
+
+.card-article{
+    @include card;    
+}
+
+.modal-content{
+    @include card;
+}
