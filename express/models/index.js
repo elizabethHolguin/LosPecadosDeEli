@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-DATABASE_URL = "mongodb+srv://admineli:blNVAZ6hr7shCBQ0@cluster0.a6bw7.gcp.mongodb.net/pecadoseli?retryWrites=true&w=majority"
+DATABASE_URL = "mongodb+srv://admin:admineli@cluster0.qj5zz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 mongoose.connect(DATABASE_URL, {
     useNewUrlParser: true,

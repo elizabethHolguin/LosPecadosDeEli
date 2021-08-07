@@ -4,3 +4,9 @@ Contraseñ apara heroku tambine
 
 admineli
 blNVAZ6hr7shCBQ0
+
+
+
+MongoAtlas
+admin 
+admineli
