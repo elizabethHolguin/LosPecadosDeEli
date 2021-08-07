@@ -7,6 +7,6 @@ blNVAZ6hr7shCBQ0
 
 
 
-MongoAtlas
-admin 
-admineli
+MongoAtlas (Nueva cuenta) Cuenta de Joselyn Holguin (jeholgui@espol.edu.ec - Yourlove*1@)
+usuario: admin 
+contraseña: admineli
