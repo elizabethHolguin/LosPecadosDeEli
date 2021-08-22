@@ -1,0 +1,8 @@
+# docker-compose.yml
+version: '3'
+services:
+  web:
+    image: node-front
+    command: ng serve
+    ports:
+      - "80:4200"
