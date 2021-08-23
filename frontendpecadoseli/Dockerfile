@@ -4,4 +4,5 @@ WORKDIR /app
 COPY ["package.json", "package-lock.json*", "./"]
 RUN npm install -g @angular/cli && npm i
 COPY . .
-CMD [ "ng", "serve" ]
+EXPOSE 4200
+CMD [ "ng", "serve", "--host", "0.0.0.0" ]
